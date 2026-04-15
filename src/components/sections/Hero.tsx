@@ -20,7 +20,10 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden pt-20">
+    <section
+      className="relative box-border flex w-full shrink-0 items-center justify-center overflow-hidden pt-20"
+      style={{ height: "100dvh", minHeight: "100dvh", maxHeight: "100dvh" }}
+    >
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}

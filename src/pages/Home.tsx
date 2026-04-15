@@ -8,7 +8,7 @@ import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background flex flex-col font-sans">
+    <div className="flex min-h-[100dvh] flex-col bg-background font-sans">
       <Navbar />
 
       <main className="flex-grow">
