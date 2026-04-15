@@ -153,56 +153,6 @@ export function About() {
             ))}
           </div>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-            className="flex flex-col gap-10 rounded-2xl p-8 surface surface-hover lg:flex-row lg:items-center lg:justify-between md:p-10"
-        >
-          <div className="max-w-2xl space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              Organisation
-            </p>
-            <h3 className="text-xl md:text-2xl font-display font-bold text-foreground">
-              Digital Valley Club
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Club scientifique de l'ESGEN (Pôle Universitaire de Kolea). Mission : connecter
-              étudiants et professionnels, développer les compétences numériques, inspirer
-              l'innovation et promouvoir l'entrepreneuriat en Algérie. L'équipe gère des formats
-              exigeants — médias, logistique, partenariats — sur des événements nationaux et
-              thématiques (fintech, e-commerce, startups…).
-            </p>
-          </div>
-          <dl className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-6 shrink-0 w-full lg:w-auto">
-            {[
-              { k: "Membres actifs", v: "79" },
-              { k: "Création", v: "2024" },
-              { k: "Grands événements", v: "8+" },
-              { k: "Impact", v: "Haut" },
-            ].map((row) => (
-              <div key={row.k} className="rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-center backdrop-blur-sm">
-                <dt className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1">
-                  {row.k}
-                </dt>
-                <dd className="text-lg font-display font-bold text-foreground">{row.v}</dd>
-              </div>
-            ))}
-          </dl>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="rounded-xl border border-dashed border-white/15 bg-white/[0.03] px-6 py-5 text-sm text-muted-foreground"
-        >
-          <span className="font-medium text-foreground">Événements réalisés (extraits) :</span>{" "}
-          Travel Day (fév. 2026), Algeria Fintech &amp; E-commerce Summit 2025, Algeria Startup
-          Challenge, Africa Real Estate Innovation Summit 2024, Slush&apos;d, Bootcamp Level Up…
-        </motion.div>
       </div>
     </section>
   );

@@ -129,6 +129,8 @@
   }
   html {
     scroll-behavior: smooth;
+    /* Whole UI ~10% “dezoomed” (90% scale); avoids transform on #root so fixed nav stays correct */
+    zoom: 0.9;
   }
 }
 

@@ -24,7 +24,7 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover scale-[1.02]"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.32] scale-[1.02]"
           autoPlay
           muted
           loop
