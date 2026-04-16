@@ -4,9 +4,9 @@ import { LogoMark } from "@/components/brand/LogoMark";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/10 bg-[hsl(230_38%_5%)] pt-20 pb-10">
+    <footer className="relative border-t border-white/10 bg-[hsl(230_38%_5%)] pb-[max(2.5rem,env(safe-area-inset-bottom,0px)+1rem)] pt-16 sm:pt-20">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="mb-12 grid grid-cols-1 gap-10 sm:mb-16 sm:gap-12 md:grid-cols-2 md:gap-10 lg:grid-cols-4">
           <div className="space-y-5 lg:col-span-1">
             <div className="flex items-center gap-2">
               <LogoMark className="h-8 w-8 rounded-lg" alt="" />
@@ -47,7 +47,7 @@ export function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-muted-foreground text-sm hover:text-foreground transition-colors flex items-center gap-2 group"
+                    className="group flex touch-manipulation items-center gap-2 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
                     {link.name}
@@ -66,14 +66,17 @@ export function Footer() {
                 <Mail className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                 <a
                   href="mailto:digitalvalley@esgen.edu.dz"
-                  className="hover:text-foreground transition-colors"
+                  className="touch-manipulation break-all text-left transition-colors hover:text-foreground"
                 >
                   digitalvalley@esgen.edu.dz
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                <a href="tel:+213793760040" className="hover:text-foreground transition-colors">
+                <a
+                  href="tel:+213793760040"
+                  className="touch-manipulation transition-colors hover:text-foreground"
+                >
                   +213 793 76 00 40
                 </a>
               </li>
@@ -107,13 +110,13 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Digital Valley Club. Tous droits réservés.</p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-foreground transition-colors">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-center text-xs text-muted-foreground sm:flex-row sm:text-left">
+          <p className="px-2">© {new Date().getFullYear()} Digital Valley Club. Tous droits réservés.</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <a href="#" className="touch-manipulation px-1 py-2 transition-colors hover:text-foreground">
               Politique de confidentialité
             </a>
-            <a href="#" className="hover:text-foreground transition-colors">
+            <a href="#" className="touch-manipulation px-1 py-2 transition-colors hover:text-foreground">
               Mentions légales
             </a>
           </div>

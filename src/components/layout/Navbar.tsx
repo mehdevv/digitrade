@@ -15,6 +15,13 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
     { name: "À propos", href: "#about" },
     { name: "Programme", href: "#program" },
@@ -28,17 +35,24 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-all duration-300 ${
         isScrolled
-          ? "border-b border-white/10 bg-[hsl(230_35%_7%/0.92)] py-3 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent py-5"
+          ? "border-b border-white/10 bg-[hsl(230_35%_7%/0.92)] backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2">
-            <LogoMark className="h-8 w-8 rounded-lg" alt="" />
-            <span className={`font-display text-xl font-bold tracking-wider transition-colors ${brandClass}`}>
+      <div
+        className={`container mx-auto px-4 md:px-6 ${isScrolled ? "py-3" : "py-3 sm:py-4"}`}
+      >
+        <div className="flex items-center justify-between gap-3">
+          <a
+            href="/"
+            className="flex min-w-0 items-center gap-2 touch-manipulation py-1"
+          >
+            <LogoMark className="h-8 w-8 shrink-0 rounded-lg" alt="" />
+            <span
+              className={`truncate font-display text-lg font-bold tracking-wider transition-colors sm:text-xl ${brandClass}`}
+            >
               DIGITRADE<span className="text-primary">2.0</span>
             </span>
           </a>
@@ -59,7 +73,7 @@ export function Navbar() {
             </ul>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_0_32px_-6px_hsl(187_100%_45%/0.5)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0"
+              className="inline-flex touch-manipulation items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_0_32px_-6px_hsl(187_100%_45%/0.5)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0"
             >
               WhatsApp
               <ArrowRight className="h-4 w-4" />
@@ -68,7 +82,7 @@ export function Navbar() {
 
           <button
             type="button"
-            className={`p-2 md:hidden ${isScrolled ? "text-foreground" : "text-white"}`}
+            className={`inline-flex min-h-11 min-w-11 touch-manipulation items-center justify-center rounded-lg p-2 md:hidden ${isScrolled ? "text-foreground" : "text-white"}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-expanded={isMobileMenuOpen}
             aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
@@ -85,14 +99,17 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute left-0 right-0 top-full border-t border-white/10 bg-[hsl(230_35%_7%/0.97)] backdrop-blur-xl md:hidden"
+            className="absolute inset-x-0 top-full border-t border-white/10 bg-[hsl(230_35%_7%/0.98)] backdrop-blur-xl md:hidden"
+            style={{
+              maxHeight: "calc(100dvh - env(safe-area-inset-top, 0px) - 4.75rem)",
+            }}
           >
-            <div className="flex flex-col space-y-1 px-4 py-6">
+            <div className="max-h-[inherit] overflow-y-auto overscroll-contain px-4 py-4 pb-[max(1.5rem,env(safe-area-inset-bottom,0px))]">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="border-b border-white/10 py-3 text-base font-medium text-white/80 hover:text-white"
+                  className="block touch-manipulation border-b border-white/10 py-3.5 text-base font-medium text-white/90 active:bg-white/5"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
@@ -100,7 +117,7 @@ export function Navbar() {
               ))}
               <a
                 href="#contact"
-                className="mt-3 w-full rounded-xl bg-primary py-3 text-center text-sm font-semibold text-primary-foreground"
+                className="mt-4 flex min-h-12 w-full touch-manipulation items-center justify-center rounded-xl bg-primary py-3.5 text-center text-sm font-semibold text-primary-foreground active:brightness-110"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 WhatsApp

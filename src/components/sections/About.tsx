@@ -60,21 +60,21 @@ export function About() {
   };
 
   return (
-    <section id="about" className="relative border-t border-white/[0.06] py-28 md:py-32">
-      <div className="container mx-auto px-4 md:px-6 space-y-24">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+    <section id="about" className="relative border-t border-white/[0.06] py-16 sm:py-24 md:py-32">
+      <div className="container mx-auto space-y-16 px-4 sm:space-y-20 md:space-y-24 md:px-6">
+        <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:w-1/2 space-y-8"
+            className="w-full space-y-6 sm:space-y-8 lg:w-1/2"
           >
             <div className="badge-pill">
               <span className="text-primary">L'Événement</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">
+            <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
               L'avenir du commerce
               <br />
               <span className="text-muted-foreground">se dessine ici.</span>
@@ -110,13 +110,13 @@ export function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4"
+            className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:w-1/2"
           >
             {objectives.map((obj, idx) => (
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="group cursor-default rounded-xl p-6 surface surface-hover"
+                className="group cursor-default rounded-xl p-5 surface surface-hover sm:p-6"
               >
                 <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/[0.06] text-primary transition-transform duration-300 group-hover:scale-110 group-hover:text-primary">
                   <obj.icon className="w-5 h-5" />
@@ -143,9 +143,12 @@ export function About() {
             dossier de presse, campagnes dédiées, accès VIP…) peuvent être ajustés à vos objectifs.
             Écrivez-nous sur WhatsApp pour recevoir la plaquette et caler un appel avec l'équipe.
           </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
             {partnerAngles.map((item, idx) => (
-              <div key={idx} className="rounded-xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm">
+              <div
+                key={idx}
+                className="rounded-xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm sm:p-5"
+              >
                 <item.icon className="w-5 h-5 text-primary mb-3" />
                 <h4 className="text-sm font-semibold text-foreground mb-1.5">{item.title}</h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>

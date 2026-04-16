@@ -67,10 +67,10 @@ export function Program() {
   return (
     <section
       id="program"
-      className="relative overflow-hidden border-t border-white/[0.06] bg-[hsl(230_32%_6%)] py-28 md:py-32"
+      className="relative overflow-hidden border-t border-white/[0.06] bg-[hsl(230_32%_6%)] py-16 sm:py-24 md:py-32"
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +84,7 @@ export function Program() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6"
+            className="mb-4 font-display text-3xl font-bold text-foreground sm:mb-6 sm:text-4xl md:text-5xl"
           >
             Un programme conçu pour{" "}
             <span className="text-gradient">l'impact.</span>
@@ -94,7 +94,7 @@ export function Program() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 }}
-            className="mx-auto mt-4 max-w-3xl text-base text-muted-foreground leading-relaxed"
+            className="mx-auto mt-3 max-w-3xl px-1 text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base"
           >
             <strong className="text-foreground font-medium">Jour 1 — campus ESGEN :</strong> accueil
             des équipes, montée des stands et exposition toute la journée pour rencontrer
@@ -105,7 +105,7 @@ export function Program() {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-2">
           {days.map((day, idx) => (
             <motion.div
               key={idx}
@@ -115,22 +115,26 @@ export function Program() {
               transition={{ delay: idx * 0.15, duration: 0.6 }}
               className="glass overflow-hidden"
             >
-              <div className="flex items-center justify-between border-b border-white/10 p-7">
-                <div>
-                  <span className={`text-xs font-mono font-semibold uppercase tracking-widest ${day.accent} mb-1 block`}>
+              <div className="flex flex-col gap-4 border-b border-white/10 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:p-6 md:p-7">
+                <div className="min-w-0 flex-1">
+                  <span
+                    className={`mb-1 block font-mono text-[10px] font-semibold uppercase tracking-widest sm:text-xs ${day.accent}`}
+                  >
                     {day.day}
                   </span>
-                  <h3 className="text-xl font-bold text-foreground">{day.title}</h3>
+                  <h3 className="text-lg font-bold text-foreground sm:text-xl">{day.title}</h3>
                 </div>
-                <div className="flex items-center gap-1.5 rounded-md border border-white/12 bg-white/[0.04] px-3 py-1.5 text-xs text-muted-foreground">
-                  <MapPin className="w-3 h-3" />
-                  {day.location}
+                <div className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-md border border-white/12 bg-white/[0.04] px-3 py-2 text-xs text-muted-foreground">
+                  <MapPin className="h-3 w-3 shrink-0" />
+                  <span className="whitespace-normal break-words sm:whitespace-nowrap">
+                    {day.location}
+                  </span>
                 </div>
               </div>
 
-              <div className="p-7 space-y-7">
+              <div className="space-y-6 p-5 sm:space-y-7 sm:p-6 md:p-7">
                 {day.events.map((event, eIdx) => (
-                  <div key={eIdx} className="flex gap-4 relative">
+                  <div key={eIdx} className="relative flex gap-3 sm:gap-4">
                     {eIdx !== day.events.length - 1 && (
                       <div className="absolute bottom-[-1.75rem] left-5 top-10 w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent" />
                     )}
@@ -139,12 +143,16 @@ export function Program() {
                     >
                       <event.icon className="w-4 h-4" />
                     </div>
-                    <div className="pt-1.5">
-                      <span className="text-xs font-mono text-muted-foreground mb-1 block">
+                    <div className="min-w-0 flex-1 pt-0.5 sm:pt-1.5">
+                      <span className="mb-1 block font-mono text-[10px] text-muted-foreground sm:text-xs">
                         {event.time}
                       </span>
-                      <h4 className="text-sm font-semibold text-foreground mb-1">{event.title}</h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{event.desc}</p>
+                      <h4 className="mb-1 text-sm font-semibold text-foreground sm:text-base">
+                        {event.title}
+                      </h4>
+                      <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                        {event.desc}
+                      </p>
                     </div>
                   </div>
                 ))}
